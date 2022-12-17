@@ -1,0 +1,80 @@
+{
+  "hash": "7baca8aa",
+  "browserHash": "14c5ef1c",
+  "optimized": {
+    "three": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "7aec8f2c",
+      "needsInterop": false
+    },
+    "three/examples/jsm/libs/stats.module": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/libs/stats.module.js",
+      "file": "three_examples_jsm_libs_stats__module.js",
+      "fileHash": "72120a7a",
+      "needsInterop": false
+    },
+    "three/examples/jsm/loaders/GLTFLoader": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "file": "three_examples_jsm_loaders_GLTFLoader.js",
+      "fileHash": "80409776",
+      "needsInterop": false
+    },
+    "three/examples/jsm/math/Capsule": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/math/Capsule.js",
+      "file": "three_examples_jsm_math_Capsule.js",
+      "fileHash": "a20b9190",
+      "needsInterop": false
+    },
+    "three/examples/jsm/math/Octree": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/math/Octree.js",
+      "file": "three_examples_jsm_math_Octree.js",
+      "fileHash": "27d115ec",
+      "needsInterop": false
+    },
+    "three/examples/jsm/objects/Sky": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/objects/Sky.js",
+      "file": "three_examples_jsm_objects_Sky.js",
+      "fileHash": "dc83e1d9",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/EffectComposer": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/postprocessing/EffectComposer.js",
+      "file": "three_examples_jsm_postprocessing_EffectComposer.js",
+      "fileHash": "9ef1c0f3",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/ShaderPass.js": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/postprocessing/ShaderPass.js",
+      "file": "three_examples_jsm_postprocessing_ShaderPass__js.js",
+      "fileHash": "0a2a3430",
+      "needsInterop": false
+    },
+    "three/examples/jsm/shaders/FXAAShader.js": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/shaders/FXAAShader.js",
+      "file": "three_examples_jsm_shaders_FXAAShader__js.js",
+      "fileHash": "5f615b5f",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/RenderPass": {
+      "src": "../../node_modules/.pnpm/three@0.133.1/node_modules/three/examples/jsm/postprocessing/RenderPass.js",
+      "file": "three_examples_jsm_postprocessing_RenderPass.js",
+      "fileHash": "311173f7",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-XOVR7QMN": {
+      "file": "chunk-XOVR7QMN.js"
+    },
+    "chunk-CKZ2HVNM": {
+      "file": "chunk-CKZ2HVNM.js"
+    },
+    "chunk-4YDFBCWP": {
+      "file": "chunk-4YDFBCWP.js"
+    },
+    "chunk-HQZYWAMR": {
+      "file": "chunk-HQZYWAMR.js"
+    }
+  }
+}
