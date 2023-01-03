@@ -6,6 +6,9 @@ declare module '*.vue' {
     export default component
 }
 
+
+// 需要vite额外进行引用识别的
+
 declare module '*.vert' {
     export default string
 }

@@ -6,16 +6,23 @@ import { PointLock } from './PointLock';
 import { Octree } from 'three/examples/jsm/math/Octree';
 import { GameResources } from './GameResources';
 
-// 初始化设置
+// 初始化上下文环境设置
+
 const container = document.querySelector('#game-view') as HTMLElement; // 绑定dom视图容器
 const initialContainerStatus = getContainerStatus(container); // 初始化时视图容器状态
-const renderer = new WebGL1Renderer({ antialias: true, alpha: false, precision: 'highp', powerPreference: 'high-performance' }); // 渲染器
+
+// 初始化threejs渲染器
+
+const renderer = new WebGL1Renderer({ antialias: true, alpha: false, precision: 'highp', powerPreference: 'high-performance' });
 renderer.toneMapping = ACESFilmicToneMapping;
 renderer.outputEncoding = sRGBEncoding;
 renderer.setSize(initialContainerStatus.width, initialContainerStatus.height);
 renderer.setPixelRatio(initialContainerStatus.pixcelRatio);
 renderer.setClearColor(new Color(0xffffff));
 renderer.domElement.className = 'webgl';
+
+// 初始化threejs效果合成器, r136改动了材质, 导致必须手动指定两个renderTarget的贴图的encoding
+
 const effectCompser = new EffectComposer(renderer);
 effectCompser.renderTarget1.texture.encoding = sRGBEncoding;
 effectCompser.renderTarget2.texture.encoding = sRGBEncoding;
@@ -87,10 +94,12 @@ export const GameContext = {
         Sprites: new Scene(),
     },
 
+    /** 物理部分 */
     Physical: {
         WorldOCTree: <Octree>undefined,
     },
 
+    /** 屏幕锁 */
     PointLock,
 
     GameResources,

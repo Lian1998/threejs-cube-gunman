@@ -11,7 +11,12 @@ const chamberPositionUtil = new Vector3();
 const muzzlePositionUtil = new Vector3();
 
 /**
- * 获取当前 枪膛, 枪口 在世界坐标轴中的位置
+ * 监听武器切换事件并动态获取当前切换武器的弹膛/枪口在blender坐标中的位置;
+ * 提供两个api分别可以动态计算出当前武器的弹膛/枪口位置 经过手部模型渲染层位置转换后 在 当前项目中的世界位置;  
+ * 
+ * 分别用于:
+ * 1. 弹膛位置: 每次开枪时, 在世界位置放出烟雾特效
+ * 2. 枪口位置: 曳光弹的初始位置
  */
 export class WeaponComponentsPositionUtil {
 
@@ -59,7 +64,7 @@ export class WeaponComponentsPositionUtil {
     }
 
     /**
-     * 计算弹膛位置
+     * 动态计算弹膛位置
      * @returns 弹膛位置
      */
     public calculateChamberPosition(): THREE.Vector3 {
@@ -95,7 +100,7 @@ export class WeaponComponentsPositionUtil {
     }
 
     /**
-     * 计算枪口位置
+     * 动态计算枪口位置
      * @returns 枪口位置
      */
     public calculateMuzzlePosition(): THREE.Vector3 {
