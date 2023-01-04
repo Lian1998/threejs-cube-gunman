@@ -1,5 +1,5 @@
 # 项目简介
-使用vite作为构建工具, 主要使用typescript 和 threejs作为渲染库 在浏览器端制作webgl3d射击游戏案例;
+使用vite作为构建工具, typescript 和 threejs作为渲染库 在浏览器端制作webgl3d射击游戏案例;
 该项目是我在系统学习了图形学和threejs这一库后进行的小练习;
 
 可供学习/参考的点:
