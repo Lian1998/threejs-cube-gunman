@@ -23,7 +23,7 @@ renderer.domElement.className = 'webgl';
 
 // 初始化threejs效果合成器, r136改动了材质, 导致必须手动指定两个renderTarget的贴图的encoding
 
-const effectCompser = new EffectComposer(renderer);
+const effectCompser = new EffectComposer(renderer, new WebGLRenderTarget(initialContainerStatus.width, initialContainerStatus.height, { stencilBuffer: true }));
 effectCompser.renderTarget1.texture.encoding = sRGBEncoding;
 effectCompser.renderTarget2.texture.encoding = sRGBEncoding;
 

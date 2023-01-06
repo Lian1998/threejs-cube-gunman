@@ -72,7 +72,7 @@ export class DaggerWeapon implements WeaponInterface {
         const holdAnimName = `${this.weaponName}_hold`; // 握持
         const viewAnimName = `${this.weaponName}_view`; // 检视
 
-        this.weaponSkinnedMesh = GameContext.GameResources.resourceMap.get(this.weaponName) as THREE.SkinnedMesh; // 武器网格体
+        this.weaponSkinnedMesh = GameContext.GameResources.resourceMap.get(`${this.weaponName}_1`) as THREE.SkinnedMesh; // 武器网格体
         this.animationMixer = GameContext.GameResources.resourceMap.get('AnimationMixer') as THREE.AnimationMixer; // 动画混合器
 
         // 将网格体添加到系统中

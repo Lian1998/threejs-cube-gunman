@@ -11,7 +11,7 @@ export class USP extends SemiAutomaticWeapon {
 
     constructor() {
         super();
-        const skinnedMesh = GameContext.GameResources.resourceMap.get('USP');
+        const skinnedMesh = GameContext.GameResources.resourceMap.get('USP_1');
         const texture = GameContext.GameResources.textureLoader.load('/weapons/weapon.USP.jpg');
         dealWithWeaponTexture(texture);
         const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });

@@ -11,12 +11,12 @@
     "dependencies": {
         "normalize.css": "^8.0.1",
         "sass": "^1.56.1",
-        "three": "^0.146.0",
+        "three": "^0.148.0",
         "vue": "^3.2.41"
     },
     "devDependencies": {
         "@types/node": "^18.11.9",
-        "@types/three": "^0.146.0",
+        "@types/three": "^0.148.0",
         "@vitejs/plugin-vue": "^3.2.0",
         "@vitejs/plugin-vue-jsx": "^2.1.1",
         "kolorist": "^1.6.0",

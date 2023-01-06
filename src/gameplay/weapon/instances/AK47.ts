@@ -25,7 +25,7 @@ export class AK47 extends AutomaticWeapon {
     constructor() {
         super(bulletPosition, bulletPositionDelta);
 
-        const skinnedMesh = GameContext.GameResources.resourceMap.get('AK47') as THREE.SkinnedMesh;
+        const skinnedMesh = GameContext.GameResources.resourceMap.get('AK47_1') as THREE.SkinnedMesh;
         const texture = GameContext.GameResources.textureLoader.load('/weapons/weapon.AK47.jpg');
         dealWithWeaponTexture(texture);
         const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });
