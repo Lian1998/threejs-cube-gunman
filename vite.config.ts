@@ -6,25 +6,20 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
     base: '/',
-    mode: 'development',
     root: path.resolve(__dirname, './multi_pages/'),
     publicDir: path.resolve(__dirname, './public/'),
-    cacheDir: path.resolve(__dirname, './.vite/'),
     assetsInclude: ['*.vert', '*.frag', '*.glsl'],
     build: {
-        outDir: path.resolve(__dirname, './.vite/dist/'),
+        outDir: path.resolve(__dirname, './cube_gunman'),
         target: 'esnext',
-        assetsDir: path.resolve(__dirname, './assets/'),
         sourcemap: true,
         emptyOutDir: true,
         minify: false,
         assetsInlineLimit: 40960,
         rollupOptions: {
             input: {
+                index: path.resolve(__dirname, './multi_pages/index.html'),
                 game: path.resolve(__dirname, './multi_pages/game/index.html')
-            },
-            output: {
-                manualChunks: {}, // https://router.vuejs.org/zh/guide/advanced/lazy-loading.html#%E4%BD%BF%E7%94%A8-vite
             }
         }
     },
