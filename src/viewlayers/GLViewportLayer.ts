@@ -24,11 +24,11 @@ export class GLViewportLayer implements CycleInterface, LoopInterface {
         // // FXAA(快速近似抗锯齿) 目前版本的threejs的FXAA-shaderpass出了点问题
         // this.fxaaPass = new ShaderPass(FXAAShader);
         // GameContext.GameView.EffectComposer.addPass(this.fxaaPass);
-        // this.updateFXAAUnifroms();
-        // window.addEventListener('resize', () => { this.updateFXAAUnifroms() }); // resize时需要更新FXAA参数
+        // this.updateFXAAUniforms();
+        // window.addEventListener('resize', () => { this.updateFXAAUniforms() }); // resize时需要更新FXAA参数
     }
 
-    updateFXAAUnifroms() {
+    updateFXAAUniforms() {
         GameContext.GameView.Renderer.getSize(this.rendererSize);
         (this.fxaaPass.material.uniforms['resolution'].value as Vector2).set(1 / this.rendererSize.x, 1 / this.rendererSize.y);
     }
