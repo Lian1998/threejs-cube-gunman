@@ -14,7 +14,11 @@ import { dealWithRoleMaterial, dealWithRoleTexture } from '@src/core/lib/threejs
 import { CycleInterface } from '../../core/inferface/CycleInterface';
 import { MeshBasicMaterial } from 'three';
 
-const roleTexture = GameContext.GameResources.textureLoader.load('/role/role.TF2.heavy.png');
+let roleTextureUrl = '/role/role.TF2.heavy.png';
+if (import.meta.env.MODE === 'giteepage') {
+    roleTextureUrl = 'https://lian_1998.gitee.io/cube_gunman/role/role.TF2.heavy.png'
+}
+const roleTexture = GameContext.GameResources.textureLoader.load(roleTextureUrl);
 dealWithRoleTexture(roleTexture);
 const roleMaterial = new MeshBasicMaterial({ map: roleTexture });
 dealWithRoleMaterial(roleMaterial);

@@ -26,7 +26,11 @@ export class AK47 extends AutomaticWeapon {
         super(bulletPosition, bulletPositionDelta);
 
         const skinnedMesh = GameContext.GameResources.resourceMap.get('AK47_1') as THREE.SkinnedMesh;
-        const texture = GameContext.GameResources.textureLoader.load('/weapons/weapon.AK47.jpg');
+        let textureUrl = '/weapons/weapon.AK47.jpg';
+        if (import.meta.env.MODE === 'giteepage') {
+            textureUrl = 'https://lian_1998.gitee.io/cube_gunman/weapons/weapon.AK47.jpg'
+        }
+        const texture = GameContext.GameResources.textureLoader.load(textureUrl);
         dealWithWeaponTexture(texture);
         const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });
         skinnedMesh.material = material;

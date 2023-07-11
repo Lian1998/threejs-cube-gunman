@@ -12,7 +12,11 @@ export class USP extends SemiAutomaticWeapon {
     constructor() {
         super();
         const skinnedMesh = GameContext.GameResources.resourceMap.get('USP_1');
-        const texture = GameContext.GameResources.textureLoader.load('/weapons/weapon.USP.jpg');
+        let textureUrl = '/weapons/weapon.USP.jpg';
+        if (import.meta.env.MODE === 'giteepage') {
+            textureUrl = 'https://lian_1998.gitee.io/cube_gunman/weapons/weapon.USP.jpg'
+        }
+        const texture = GameContext.GameResources.textureLoader.load(textureUrl);
         dealWithWeaponTexture(texture);
         const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });
         (skinnedMesh as THREE.SkinnedMesh).material = material;
