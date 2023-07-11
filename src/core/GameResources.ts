@@ -12,8 +12,8 @@ export const GameResources = {
 /** 初始化所有资源 */
 export const initResource = async () => {
 
-    const hands = GameResources.loader.loadAsync('/role/base/hand base.glb');
-    const role = GameResources.loader.loadAsync('/role/base/role base.glb');
+    const hands = GameResources.loader.loadAsync('/role/base/hand_base.glb');
+    const role = GameResources.loader.loadAsync('/role/base/role_base.glb');
     const map = GameResources.loader.loadAsync('/levels/mirage.glb');
 
     const [gltf1, gltf2, gltf3] = await Promise.all([hands, role, map]);
