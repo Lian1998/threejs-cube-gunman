@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "build_giteepage": "vite build --base https://lian_1998.gitee.io/cube_gunman/",
+        "build_giteepage": "vite build --base https://lian_1998.gitee.io/cube_gunman/ --mode giteepage",
         "tscheck": "vue-tsc --noEmit",
         "preview": "vite preview"
     },

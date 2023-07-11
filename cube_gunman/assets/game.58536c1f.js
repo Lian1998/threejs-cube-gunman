@@ -41682,9 +41682,17 @@ const GameResources = {
   resourceMap: /* @__PURE__ */ new Map()
 };
 const initResource = async () => {
-  const hands = GameResources.loader.loadAsync("/role/base/hand_base.glb");
-  const role = GameResources.loader.loadAsync("/role/base/role_base.glb");
-  const map = GameResources.loader.loadAsync("/levels/mirage.glb");
+  let handBaseUrl = "/role/base/hand_base.glb";
+  let roleUrl = "/role/base/role_base.glb";
+  let mapUrl = "/levels/mirage.glb";
+  {
+    handBaseUrl = "https://lian_1998.gitee.io/cube_gunman/role/base/hand_base.glb";
+    roleUrl = "https://lian_1998.gitee.io/cube_gunman/role/base/role_base.glb";
+    mapUrl = "https://lian_1998.gitee.io/cube_gunman/levels/mirage.glb";
+  }
+  const hands = GameResources.loader.loadAsync(handBaseUrl);
+  const role = GameResources.loader.loadAsync(roleUrl);
+  const map = GameResources.loader.loadAsync(mapUrl);
   const [gltf1, gltf2, gltf3] = await Promise.all([hands, role, map]);
   let armature;
   gltf1.scene.traverse((child) => {
@@ -41771,7 +41779,7 @@ onWindowResize();
 window.addEventListener("resize", onWindowResize);
 
 initResource().then(() => {
-  __vitePreload(() => import('./GameObjectMap.301aea85.js'),true?[]:void 0).then(({ GameObjectsMap }) => {
+  __vitePreload(() => import('./GameObjectMap.6dcea179.js'),true?[]:void 0).then(({ GameObjectsMap }) => {
     GameObjectsMap.forEach((value, key, map) => {
       if (value.init)
         GameContext.CycleObjects.push(value);
@@ -41809,4 +41817,4 @@ window.addEventListener("keyup", function(e) {
 });
 
 export { AddEquation as A, Box3 as B, CustomBlending as C, DomPipe as D, FrontSide as F, GameContext as G, Line3 as L, MeshBasicMaterial as M, NearestFilter as N, OneMinusSrcAlphaFactor as O, Plane as P, Raycaster as R, Sphere as S, Triangle as T, UserInputEventEnum as U, Vector3 as V, WeaponAnimationEventEnum as W, SrcAlphaFactor as a, LinearFilter as b, Vector2 as c, MathUtils as d, LinearInterpolant as e, LoopOnce as f, LoopRepeat as g, DoubleSide as h, DomEventPipe as i, PointLockEvent as j, PointLockEventEnum as k, ShaderPass as l, Texture as m, BufferGeometry as n, ShaderMaterial as o, AdditiveBlending as p, Points as q, BufferAttribute as r, sRGBEncoding as s, Mesh as t, UniformsUtils as u, BackSide as v, BoxGeometry as w, Color as x };
-//# sourceMappingURL=game.b985fb7c.js.map
+//# sourceMappingURL=game.58536c1f.js.map

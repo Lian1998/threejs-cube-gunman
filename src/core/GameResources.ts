@@ -12,9 +12,19 @@ export const GameResources = {
 /** 初始化所有资源 */
 export const initResource = async () => {
 
-    const hands = GameResources.loader.loadAsync('/role/base/hand_base.glb');
-    const role = GameResources.loader.loadAsync('/role/base/role_base.glb');
-    const map = GameResources.loader.loadAsync('/levels/mirage.glb');
+    let handBaseUrl = '/role/base/hand_base.glb';
+    let roleUrl = '/role/base/role_base.glb';
+    let mapUrl = '/levels/mirage.glb';
+
+    if (import.meta.env.MODE === 'giteepage') {
+        handBaseUrl = 'https://lian_1998.gitee.io/cube_gunman/role/base/hand_base.glb';
+        roleUrl = 'https://lian_1998.gitee.io/cube_gunman/role/base/role_base.glb';
+        mapUrl = 'https://lian_1998.gitee.io/cube_gunman/levels/mirage.glb';
+    }
+
+    const hands = GameResources.loader.loadAsync(handBaseUrl);
+    const role = GameResources.loader.loadAsync(roleUrl);
+    const map = GameResources.loader.loadAsync(mapUrl);
 
     const [gltf1, gltf2, gltf3] = await Promise.all([hands, role, map]);
 
