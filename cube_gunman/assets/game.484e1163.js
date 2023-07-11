@@ -41779,7 +41779,7 @@ onWindowResize();
 window.addEventListener("resize", onWindowResize);
 
 initResource().then(() => {
-  __vitePreload(() => import('./GameObjectMap.6dcea179.js'),true?[]:void 0).then(({ GameObjectsMap }) => {
+  __vitePreload(() => import('./GameObjectMap.f16b5e5f.js'),true?[]:void 0).then(({ GameObjectsMap }) => {
     GameObjectsMap.forEach((value, key, map) => {
       if (value.init)
         GameContext.CycleObjects.push(value);
@@ -41817,4 +41817,4 @@ window.addEventListener("keyup", function(e) {
 });
 
 export { AddEquation as A, Box3 as B, CustomBlending as C, DomPipe as D, FrontSide as F, GameContext as G, Line3 as L, MeshBasicMaterial as M, NearestFilter as N, OneMinusSrcAlphaFactor as O, Plane as P, Raycaster as R, Sphere as S, Triangle as T, UserInputEventEnum as U, Vector3 as V, WeaponAnimationEventEnum as W, SrcAlphaFactor as a, LinearFilter as b, Vector2 as c, MathUtils as d, LinearInterpolant as e, LoopOnce as f, LoopRepeat as g, DoubleSide as h, DomEventPipe as i, PointLockEvent as j, PointLockEventEnum as k, ShaderPass as l, Texture as m, BufferGeometry as n, ShaderMaterial as o, AdditiveBlending as p, Points as q, BufferAttribute as r, sRGBEncoding as s, Mesh as t, UniformsUtils as u, BackSide as v, BoxGeometry as w, Color as x };
-//# sourceMappingURL=game.58536c1f.js.map
+//# sourceMappingURL=game.484e1163.js.map

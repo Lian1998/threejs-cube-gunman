@@ -1,4 +1,4 @@
-import { V as Vector3, P as Plane, L as Line3, S as Sphere, B as Box3, T as Triangle, N as NearestFilter, s as sRGBEncoding, F as FrontSide, C as CustomBlending, A as AddEquation, a as SrcAlphaFactor, O as OneMinusSrcAlphaFactor, M as MeshBasicMaterial, b as LinearFilter, G as GameContext, D as DomPipe, c as Vector2, R as Raycaster, U as UserInputEventEnum, d as MathUtils, e as LinearInterpolant, W as WeaponAnimationEventEnum, f as LoopOnce, g as LoopRepeat, h as DoubleSide, i as DomEventPipe, j as PointLockEvent, k as PointLockEventEnum, l as ShaderPass, m as Texture, n as BufferGeometry, o as ShaderMaterial, p as AdditiveBlending, q as Points, r as BufferAttribute, t as Mesh, u as UniformsUtils, v as BackSide, w as BoxGeometry, x as Color } from './game.58536c1f.js';
+import { V as Vector3, P as Plane, L as Line3, S as Sphere, B as Box3, T as Triangle, N as NearestFilter, s as sRGBEncoding, F as FrontSide, C as CustomBlending, A as AddEquation, a as SrcAlphaFactor, O as OneMinusSrcAlphaFactor, M as MeshBasicMaterial, b as LinearFilter, G as GameContext, D as DomPipe, c as Vector2, R as Raycaster, U as UserInputEventEnum, d as MathUtils, e as LinearInterpolant, W as WeaponAnimationEventEnum, f as LoopOnce, g as LoopRepeat, h as DoubleSide, i as DomEventPipe, j as PointLockEvent, k as PointLockEventEnum, l as ShaderPass, m as Texture, n as BufferGeometry, o as ShaderMaterial, p as AdditiveBlending, q as Points, r as BufferAttribute, t as Mesh, u as UniformsUtils, v as BackSide, w as BoxGeometry, x as Color } from './game.484e1163.js';
 
 const _v1$1 = new Vector3();
 const _v2$1 = new Vector3();
@@ -641,7 +641,11 @@ class LevelMirage {
     const boardMesh = gltf.scene.children[0];
     const physicsMesh = gltf.scene;
     octTree.fromGraphNode(physicsMesh);
-    const bakedTexture = GameContext.GameResources.textureLoader.load("/levels/t.mirage.baked.75.jpg");
+    let bakedTextureUrl = "/levels/t.mirage.baked.75.jpg";
+    {
+      bakedTextureUrl = "https://lian_1998.gitee.io/cube_gunman/levels/t.mirage.baked.75.jpg";
+    }
+    const bakedTexture = GameContext.GameResources.textureLoader.load(bakedTextureUrl);
     dealWithBakedTexture(boardMesh, bakedTexture);
     anisotropy8x(boardMesh);
     boardMesh.userData["GameObjectMaterialEnum"] = GameObjectMaterialEnum.GrassGround;
@@ -1139,7 +1143,11 @@ class AK47 extends AutomaticWeapon {
   constructor() {
     super(bulletPosition, bulletPositionDelta);
     const skinnedMesh = GameContext.GameResources.resourceMap.get("AK47_1");
-    const texture = GameContext.GameResources.textureLoader.load("/weapons/weapon.AK47.jpg");
+    let textureUrl = "/weapons/weapon.AK47.jpg";
+    {
+      textureUrl = "https://lian_1998.gitee.io/cube_gunman/weapons/weapon.AK47.jpg";
+    }
+    const texture = GameContext.GameResources.textureLoader.load(textureUrl);
     dealWithWeaponTexture(texture);
     const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });
     skinnedMesh.material = material;
@@ -1360,7 +1368,11 @@ class USP extends SemiAutomaticWeapon {
   constructor() {
     super();
     const skinnedMesh = GameContext.GameResources.resourceMap.get("USP_1");
-    const texture = GameContext.GameResources.textureLoader.load("/weapons/weapon.USP.jpg");
+    let textureUrl = "/weapons/weapon.USP.jpg";
+    {
+      textureUrl = "https://lian_1998.gitee.io/cube_gunman/weapons/weapon.USP.jpg";
+    }
+    const texture = GameContext.GameResources.textureLoader.load(textureUrl);
     dealWithWeaponTexture(texture);
     const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });
     skinnedMesh.material = material;
@@ -1497,7 +1509,11 @@ class M9 extends DaggerWeapon {
   constructor() {
     super();
     const skinnedMesh = GameContext.GameResources.resourceMap.get("M9_1");
-    const texture = GameContext.GameResources.textureLoader.load("/weapons/weapon.M9.jpg");
+    let textureUrl = "/weapons/weapon.M9.jpg";
+    {
+      textureUrl = "https://lian_1998.gitee.io/cube_gunman/weapons/weapon.M9.jpg";
+    }
+    const texture = GameContext.GameResources.textureLoader.load(textureUrl);
     dealWithWeaponTexture(texture);
     const material = new MeshBasicMaterial({ map: texture, side: DoubleSide });
     skinnedMesh.material = material;
@@ -1828,7 +1844,11 @@ class MovementController {
   }
 }
 
-const roleTexture = GameContext.GameResources.textureLoader.load("/role/role.TF2.heavy.png");
+let roleTextureUrl = "/role/role.TF2.heavy.png";
+{
+  roleTextureUrl = "https://lian_1998.gitee.io/cube_gunman/role/role.TF2.heavy.png";
+}
+const roleTexture = GameContext.GameResources.textureLoader.load(roleTextureUrl);
 dealWithRoleTexture(roleTexture);
 const roleMaterial = new MeshBasicMaterial({ map: roleTexture });
 dealWithRoleMaterial(roleMaterial);
@@ -2364,7 +2384,7 @@ class GLViewportLayer {
     GameContext.GameView.Renderer.autoClearDepth = false;
     GameContext.GameView.Renderer.autoClearStencil = false;
   }
-  updateFXAAUnifroms() {
+  updateFXAAUniforms() {
     GameContext.GameView.Renderer.getSize(this.rendererSize);
     this.fxaaPass.material.uniforms["resolution"].value.set(1 / this.rendererSize.x, 1 / this.rendererSize.y);
   }
@@ -3447,4 +3467,4 @@ GameObjects.forEach((item) => {
 });
 
 export { GameObjectsMap };
-//# sourceMappingURL=GameObjectMap.6dcea179.js.map
+//# sourceMappingURL=GameObjectMap.f16b5e5f.js.map
