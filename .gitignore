@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+cube_gunman
 node_modules
 dist
 .vite/
