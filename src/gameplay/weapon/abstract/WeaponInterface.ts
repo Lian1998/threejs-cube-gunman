@@ -14,7 +14,6 @@ export type WeaponInterface = {
     weaponNameSuffix: string; // 武器后缀名
     magazineSize: number; // 弹夹容量
     recoverTime: number; // 弹道恢复时间
-    reloadTime: number;
     speed: number; // 手持移动速度
     killaward: number; // 击杀奖励
     damage: number; // 伤害

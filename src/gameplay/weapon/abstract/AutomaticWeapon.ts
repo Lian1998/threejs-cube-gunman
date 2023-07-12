@@ -44,21 +44,20 @@ export abstract class AutomaticWeapon implements CycleInterface, LoopInterface, 
     weaponNameSuffix: string; // 武器后缀名
     magazineSize: number; // 弹夹容量
     recoverTime: number; // 弹道恢复时间
-    reloadTime: number;
     speed: number; // 手持移动速度
     killaward: number; // 击杀奖励
     damage: number; // 伤害
     fireRate: number; // 射速
-    recoilControl: number; // 弹道控制
+    recoilControl: number; // 弹道控制力(影响镜头Y轴的偏移能力)
     accurateRange: number; // 在accurate range距离内第一发子弹必定会落到30cm内的标靶上
     armorPenetration: number; // 穿透能力
 
     // 自动武器属性
-    recoverLine: number = 0; // 膛线
+    recoverLine: number = 0; // 武器准心偏离积累量
     bulletPosition: Array<number>; // 弹道弹点采样图2D转化为屏幕坐标采样点2D
     bulletPositionDelta: Array<number>; // 每发子弹偏移量
-    bulletPositionInterpolant: THREE.LinearInterpolant; // 弹道图位点生成插值空间
-    bulletPositionDeltaInterpolant: THREE.LinearInterpolant; // 弹道图变化量生成插值空间
+    bulletPositionInterpolant: THREE.LinearInterpolant; // 弹道图位点生成插值空间 横坐标为(0 ~ 射速x弹匣容量)
+    bulletPositionDeltaInterpolant: THREE.LinearInterpolant; // 弹道图变化量生成插值空间 横坐标为(0 ~ 射速x弹匣容量)
 
 
     // 武器动画
@@ -200,7 +199,7 @@ export abstract class AutomaticWeapon implements CycleInterface, LoopInterface, 
 
     /** 开火 */
     fire() {
-        // 如果进入过恢复状态
+        // 如果进入过恢复状态, 不是开始恢复的第一帧
         if (!startRecover) {
             // 那么这次相机进入恢复状态的总改变量 初始化为上次恢复后的总改变量
             cameraRotateTotalX = recovercameraRotateTotalX;
@@ -208,19 +207,19 @@ export abstract class AutomaticWeapon implements CycleInterface, LoopInterface, 
         }
 
         // 提供基础弹点位置,基础弹点的位置出来的是屏幕坐标
-        const floatTypedArray0 = this.bulletPositionInterpolant.evaluate(this.recoverLine); // 通过插值函数获取当前膛线点对应的基础位置
+        const floatTypedArray0 = this.bulletPositionInterpolant.evaluate(this.recoverLine); // 通过插值函数获取当前武器准心偏离积累量对应的基础位置
         bPointRecoiledScreenCoord.set(floatTypedArray0[0], floatTypedArray0[1]); // 提供武器精准度影响后的位置(武器精准度)
         const deltaRecoiledX = (1 / this.accurateRange) * (Math.random() - 0.5); // 修正公式: delta = 精准度倒数 * 随机±0.5
-        const deltaRecoiledY = (1 / this.accurateRange) * Math.random(); // Y轴方向只会往上偏移因此一定是正的
+        const deltaRecoiledY = (1 / this.accurateRange) * Math.random(); // Y轴方向不会产生向下的偏移量
         bPointRecoiledScreenCoord.x += deltaRecoiledX;
         bPointRecoiledScreenCoord.y += deltaRecoiledY;
 
-        // 相机摆动基础(Y轴, 相机Pitch方向)
+        // 相机摆动基础(相机Pitch方向)
         const basicPitch = 0.02 * Math.PI * (1 / this.recoilControl);
         this.camera.rotation.x += basicPitch;
         cameraRotationBasicTotal += basicPitch; // 把相机收到变化的值记录起来
 
-        // 相机摆动(弹道图)
+        // 相机摆动(根据弹道图偏移)
         const floatTypedArray1 = this.bulletPositionDeltaInterpolant.evaluate(this.recoverLine);
         const deltaYaw = - floatTypedArray1[0] * Math.PI * (1 / this.recoilControl); // 弹道图向右为正方向,相机Yaw向右为负方向
         const deltaPitch = floatTypedArray1[1] * Math.PI * (1 / this.recoilControl);
@@ -250,9 +249,9 @@ export abstract class AutomaticWeapon implements CycleInterface, LoopInterface, 
     /** 相机/准星恢复 */
     recover(deltaTime?: number, elapsedTime?: number): void {
         if (cameraRotationBasicTotal > 0) {
-            if (cameraRotationBasicTotal - 0.001 > 0) {
-                this.camera.rotation.x -= 0.001;
-                cameraRotationBasicTotal -= 0.001;
+            if (cameraRotationBasicTotal - 0.01 > 0) {
+                this.camera.rotation.x -= 0.01;
+                cameraRotationBasicTotal -= 0.01;
             } else {
                 this.camera.rotation.x -= cameraRotationBasicTotal;
                 cameraRotationBasicTotal = 0;
@@ -260,14 +259,14 @@ export abstract class AutomaticWeapon implements CycleInterface, LoopInterface, 
         }
         const triggleDown = this.weaponSystem.triggleDown;
         let deltaRecoverScale = deltaTime / this.recoverTime; // 每段deltaTime的recover量
-        if (!triggleDown || this.bulletLeftMagzine <= 0 || !this.active) {// 如果鼠标没有按下或者这一帧刚好没子弹了
+        if (!triggleDown || this.bulletLeftMagzine <= 0 || !this.active) { // 鼠标不再按下|不处于激活状态|子弹用光了
             if (startRecover) { // 如果这一帧是这次进入恢复状态的第一帧
                 recovercameraRotateTotalX = cameraRotateTotalX; // 记录recovercameraRotateTotalX此次恢复需要恢复的总值
                 recovercameraRotateTotalY = cameraRotateTotalY;
                 startRecoverLine = this.recoverLine;
             }
             // 判断是否需要恢复准星
-            if (this.recoverLine != 0) { // 需要恢复准星
+            if (this.recoverLine !== 0) { // 需要恢复准星
                 const recoverLineBeforeMinus = this.recoverLine;
                 if (this.recoverLine - (deltaRecoverScale * startRecoverLine) > 0) this.recoverLine -= (deltaRecoverScale * startRecoverLine);
                 else { // 如果下一帧就减到<0了
