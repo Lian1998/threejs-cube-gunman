@@ -2,12 +2,14 @@
 import { Object3D, AnimationMixer, TextureLoader } from 'three';
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-
+export const publicPath = import.meta.env.VITE_PUBLIC_ROOT;
 export const GameResources = {
     loader: new GLTFLoader(),
     textureLoader: new TextureLoader(),
     resourceMap: new Map<string, THREE.Object3D | THREE.AnimationMixer | THREE.AnimationClip | THREE.AnimationAction | GLTF>(),
 }
+GameResources.loader.setPath(publicPath);
+GameResources.textureLoader.setPath(publicPath);
 
 /** 初始化所有资源 */
 export const initResource = async () => {

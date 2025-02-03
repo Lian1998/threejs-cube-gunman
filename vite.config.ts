@@ -19,7 +19,6 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: path.resolve(__dirname, './multi_pages/index.html'),
-                game: path.resolve(__dirname, './multi_pages/game/index.html')
             }
         }
     },
@@ -33,7 +32,7 @@ export default defineConfig({
         }
     },
     plugins: [vue(), vueJsx()],
-    envDir: path.resolve(__dirname, './vite_envs/'),
+    envDir: path.resolve(__dirname, './envs/'),
     envPrefix: 'VITE_',
 
     css: {
