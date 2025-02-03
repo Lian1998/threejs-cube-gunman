@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build --base /threejs-cube-gunman/",
+        "build": "vite build --base /docs/",
         "tscheck": "vue-tsc --noEmit",
         "preview": "vite preview"
     },

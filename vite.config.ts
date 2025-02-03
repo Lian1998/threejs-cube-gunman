@@ -10,7 +10,7 @@ export default defineConfig({
     publicDir: path.resolve(__dirname, './public/'),
     assetsInclude: ['*.vert', '*.frag', '*.glsl'],
     build: {
-        outDir: path.resolve(__dirname, './threejs-cube-gunman'),
+        outDir: path.resolve(__dirname, './docs'),
         target: 'esnext',
         sourcemap: true,
         emptyOutDir: true,
