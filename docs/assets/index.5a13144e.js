@@ -42,7 +42,7 @@ true&&(function polyfill() {
     }
 }());
 
-const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/docs/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
+const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/threejs-cube-gunman/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
     // @ts-ignore
     if (!true || !deps || deps.length === 0) {
         return baseModule();
@@ -41676,7 +41676,7 @@ function toTrianglesDrawMode( geometry, drawMode ) {
 
 }
 
-const publicPath = "/docs";
+const publicPath = "/threejs-cube-gunman";
 const GameResources = {
   loader: new GLTFLoader(),
   textureLoader: new TextureLoader(),
@@ -41774,7 +41774,7 @@ onWindowResize();
 window.addEventListener("resize", onWindowResize);
 
 initResource().then(() => {
-  __vitePreload(() => import('./GameObjectMap.7439a822.js'),true?[]:void 0).then(({ GameObjectsMap }) => {
+  __vitePreload(() => import('./GameObjectMap.ac90df26.js'),true?[]:void 0).then(({ GameObjectsMap }) => {
     GameObjectsMap.forEach((value, key, map) => {
       if (value.init)
         GameContext.CycleObjects.push(value);
@@ -41812,4 +41812,4 @@ window.addEventListener("keyup", function(e) {
 });
 
 export { AddEquation as A, Box3 as B, CustomBlending as C, DomPipe as D, FrontSide as F, GameContext as G, Line3 as L, MeshBasicMaterial as M, NearestFilter as N, OneMinusSrcAlphaFactor as O, Plane as P, Raycaster as R, Sphere as S, Triangle as T, UserInputEventEnum as U, Vector3 as V, WeaponAnimationEventEnum as W, SrcAlphaFactor as a, LinearFilter as b, Vector2 as c, MathUtils as d, LinearInterpolant as e, LoopOnce as f, LoopRepeat as g, DoubleSide as h, DomEventPipe as i, PointLockEvent as j, PointLockEventEnum as k, ShaderPass as l, Texture as m, BufferGeometry as n, ShaderMaterial as o, AdditiveBlending as p, Points as q, BufferAttribute as r, sRGBEncoding as s, Mesh as t, UniformsUtils as u, BackSide as v, BoxGeometry as w, Color as x };
-//# sourceMappingURL=index.6f544ad8.js.map
+//# sourceMappingURL=index.5a13144e.js.map
