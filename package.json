@@ -1,12 +1,11 @@
 {
-    "name": "cube_gunman",
+    "name": "threejs-cube-gunman",
     "private": true,
     "version": "0.0.0",
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "build_giteepage": "vite build --base https://lian_1998.gitee.io/cube_gunman/ --mode giteepage",
         "tscheck": "vue-tsc --noEmit",
         "preview": "vite preview"
     },
